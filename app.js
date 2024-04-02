@@ -16,9 +16,7 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/order", orderRouter);
 const cron = require("node-cron");
 const User = require("./modal/userModal");
-app.use("/", (req, res) => {
-  res.send("hellw world");
-});
+
 cron.schedule("0 0 * * *", async () => {
   try {
     // Find all users with an active plan
@@ -39,6 +37,9 @@ cron.schedule("0 0 * * *", async () => {
   } catch (error) {
     console.error("Error adding daily profit to users wallets:", error);
   }
+});
+app.use("/", (req, res) => {
+  res.send("hellw world");
 });
 app.use(errorHandeler);
 
