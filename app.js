@@ -4,7 +4,7 @@ const app = express();
 require("dotenv").config();
 app.use(
   cors({
-    origin: "http://www.nexgeninvest.net",
+    origin: "https://investment-32002.web.app",
   })
 );
 app.set("port", 5003);
