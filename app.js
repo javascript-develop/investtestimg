@@ -2,13 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 require("dotenv").config();
-app.use(cors());
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-  next();
-});
-
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 app.set("port", 5003);
 app.use(express.json());
 const errorHandeler = require("./utilities/errorhendaler");
@@ -40,11 +38,9 @@ cron.schedule("0 0 * * *", async () => {
     console.error("Error adding daily profit to users wallets:", error);
   }
 });
-
 app.use("/", (req, res) => {
-  res.send("hello world");
+  res.send("hellw world");
 });
-
 app.use(errorHandeler);
 
 module.exports = app;
